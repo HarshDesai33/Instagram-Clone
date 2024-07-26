@@ -33,16 +33,15 @@ app.use(
     resave: false,
     saveUninitialized: false,
     secret: "secret key",
-    cookie: { maxAge: 60000 }, // 1 minute
+    cookie: { maxAge: 60000 },
     store: new MongoStore({
       mongoUrl: mongoUrl,
-      ttl: 14 * 24 * 60 * 60, // = 14 days. Default
-      autoRemove: "native", // Default
+      ttl: 14 * 24 * 60 * 60, // =14 days
+      autoRemove: "native",
     }),
   })
 );
 
-// Initialize Passport and restore authentication state, if any, from the session
 app.use(passport.initialize());
 app.use(passport.session());
 
